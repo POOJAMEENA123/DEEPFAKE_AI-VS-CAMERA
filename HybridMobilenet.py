@@ -182,7 +182,7 @@ for train_index, val_index in kf.split(file_list):
     x = Flatten()(x)
     x = Dense(1024, activation='relu')(x)
     x = Dropout(0.5)(x)
-    predictions = Dense(1, activation='sigmoid')(x)  # Adjust output units for 2 classes
+    predictions = Dense(1, activation='sigmoid')(x) 
 
     model = Model(inputs=base_model.input, outputs=predictions)
 
@@ -252,7 +252,7 @@ accuracy = test_accuracy
 
 print('Classification Report:')
 for label, metrics in class_report.items():
-    if isinstance(metrics, dict):  # Skip 'accuracy' as it is just a single float value
+    if isinstance(metrics, dict):  
         print(f'\nClass: {label}')
         for metric, value in metrics.items():
             print(f'{metric.capitalize()}: {value:.4f}')
@@ -296,4 +296,5 @@ plt.plot(epochs_range, loss, label='Training Loss')
 plt.plot(epochs_range, val_loss, label='Validation Loss')
 plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
+
 plt.show()
